@@ -14,6 +14,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   const changeTheme = function () {
     setTheme(theme === "light" ? "dark" : "light");
+    document.querySelector("html")?.classList.toggle("dark");
   };
 
   return (
