@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 
-const Context = createContext({
+import { ThemeProps } from "../types/ThemeProps";
+
+const Context = createContext<ThemeProps>({
   theme: "light",
   changeTheme: () => {},
 });
