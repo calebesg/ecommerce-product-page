@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 
-const Context = createContext({
+import { ThemeProps } from "../types/ThemeProps";
+
+const Context = createContext<ThemeProps>({
   theme: "light",
   changeTheme: () => {},
 });
@@ -14,6 +16,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   const changeTheme = function () {
     setTheme(theme === "light" ? "dark" : "light");
+    document.querySelector("html")?.classList.toggle("dark");
   };
 
   return (

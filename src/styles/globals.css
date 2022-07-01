@@ -7,3 +7,7 @@
 * {
   @apply font-kumbh;
 }
+
+body {
+  @apply text-grayish_blue-800 dark:text-grayish_blue-100 bg-white dark:bg-grayish_blue-800 transition-colors;
+}
