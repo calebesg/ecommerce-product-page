@@ -6,6 +6,7 @@ import { ThemeProps } from "../types/ThemeProps";
 
 import Logo from "./Logo";
 import avatar from "../assets/image-avatar.png";
+import ToggleButton from "./ToggleButton";
 
 export default function Header() {
   const renderNav = function (theme: ThemeProps) {
@@ -66,12 +67,7 @@ export default function Header() {
             </li>
           </ul>
 
-          <button
-            className="text-grayish_blue-800 dark:text-grayish_blue-400 transition-colors"
-            onClick={() => theme.changeTheme()}
-          >
-            Dark Mode
-          </button>
+          <ToggleButton onChange={theme.changeTheme} />
         </div>
 
         <div className="flex items-center gap-11">
