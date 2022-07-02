@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingCart } from "phosphor-react";
+import ShoppingCart from "../components/ShoppingCart";
 import ThemeContext from "../contexts/ThemeContext";
 import { ThemeProps } from "../types/ThemeProps";
 
@@ -71,15 +71,7 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-11">
-          <button
-            className="relative text-grayish_blue-800 dark:text-grayish_blue-100 transition-colors"
-            aria-label="shopping cart"
-          >
-            <span className="absolute -top-1 -right-1 px-2 bg-orange-500 text-white text-[9px] rounded-lg">
-              2
-            </span>
-            <ShoppingCart size={26} width="light" />
-          </button>
+          <ShoppingCart />
 
           <Link href="/" passHref>
             <a className="w-[50px] h-[50px] rounded-full border-2 border-transparent  hover:border-orange-500 transition-colors">
