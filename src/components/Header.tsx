@@ -2,29 +2,33 @@ import Link from "next/link";
 import Image from "next/image";
 import ShoppingCart from "../components/ShoppingCart";
 import ThemeContext from "../contexts/ThemeContext";
-import { ThemeProps } from "../types/ThemeProps";
 
 import Logo from "./Logo";
 import avatar from "../assets/image-avatar.png";
 import ToggleButton from "./ToggleButton";
 
 export default function Header() {
-  const renderNav = function (theme: ThemeProps) {
-    return (
-      <nav className="flex items-center justify-between gap-8 h-28 border-b border-grayish_blue-400 dark:border-grayish_blue-700 max-w-6xl mx-auto transition-colors">
-        <Link href="/">
-          <a aria-label="back to home">
-            <Logo
-              color={
-                theme.theme === "light"
-                  ? "hsl(220, 13%, 13%)"
-                  : "hsl(223, 64%, 98%)"
-              }
-            />
-          </a>
-        </Link>
-        <div className="flex-1 hidden lg:flex items-center justify-between h-full">
-          <ul className="list-none h-full flex items-center gap-8 text-grayish_blue-500 dark:text-grayish_blue-400 transition-colors">
+  return (
+    <header>
+      <nav className="flex items-center justify-between gap-8 h-28 border-b border-grayish_blue-400 dark:border-grayish_blue-700 transition-colors">
+        <ThemeContext.Consumer>
+          {({ theme }) => (
+            <Link href="/">
+              <a aria-label="back to home">
+                <Logo
+                  color={
+                    theme === "light"
+                      ? "hsl(220, 13%, 13%)"
+                      : "hsl(223, 64%, 98%)"
+                  }
+                />
+              </a>
+            </Link>
+          )}
+        </ThemeContext.Consumer>
+
+        <div className="flex-1 hidden lg:flex justify-between items-center h-full">
+          <ul className="list-none w-60 h-full flex items-center gap-8 text-grayish_blue-500 dark:text-grayish_blue-400 transition-color">
             <li className="h-full flex items-center relative">
               <Link href="/" passHref>
                 <a className="border-white group">
@@ -67,7 +71,9 @@ export default function Header() {
             </li>
           </ul>
 
-          <ToggleButton onChange={theme.changeTheme} />
+          <ThemeContext.Consumer>
+            {({ changeTheme }) => <ToggleButton onChange={changeTheme} />}
+          </ThemeContext.Consumer>
         </div>
 
         <div className="flex items-center gap-11">
@@ -80,14 +86,6 @@ export default function Header() {
           </Link>
         </div>
       </nav>
-    );
-  };
-
-  return (
-    <header className="px-4">
-      <ThemeContext.Consumer>
-        {(value) => renderNav(value)}
-      </ThemeContext.Consumer>
     </header>
   );
 }
