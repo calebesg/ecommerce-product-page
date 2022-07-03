@@ -11,7 +11,7 @@ import Drawer from "./Drawer";
 export default function Header() {
   return (
     <header>
-      <nav className="flex items-center justify-between gap-8 h-28 border-b border-grayish_blue-400 dark:border-grayish_blue-700 transition-colors">
+      <nav className="flex items-center justify-between gap-4 lg:gap-8 h-28 border-b border-grayish_blue-400 dark:border-grayish_blue-700 transition-colors">
         <Drawer />
 
         <ThemeContext.Consumer>
@@ -79,12 +79,12 @@ export default function Header() {
           </ThemeContext.Consumer>
         </div>
 
-        <div className="flex items-center gap-11">
+        <div className="flex items-center gap-6 lg:gap-11">
           <ShoppingCart />
 
           <Link href="/" passHref>
-            <a className="w-[50px] h-[50px] rounded-full border-2 border-transparent  hover:border-orange-500 transition-colors">
-              <Image src={avatar} width={50} height={50} alt="Gabriel" />
+            <a className="w-10 h-10 lg:w-[50px] lg:h-[50px] rounded-full border-2 border-transparent  hover:border-orange-500 transition-colors">
+              <Image src={avatar} width="100%" height="100%" alt="Gabriel" />
             </a>
           </Link>
         </div>

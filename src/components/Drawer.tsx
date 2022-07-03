@@ -11,15 +11,16 @@ import {
 } from "@chakra-ui/react";
 
 import ToggleButton from "./ToggleButton";
+import { List } from "phosphor-react";
 
 export default function DrawerMenu() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const buttonMenuRef = useRef(null);
 
   return (
-    <div className="lg:hidden">
-      <button ref={buttonMenuRef} onClick={onOpen}>
-        Menu
+    <>
+      <button className="lg:hidden" ref={buttonMenuRef} onClick={onOpen}>
+        <List size={32} weight="bold" />
       </button>
 
       <Drawer
@@ -30,10 +31,10 @@ export default function DrawerMenu() {
       >
         <DrawerOverlay />
         <DrawerContent className="bg-white dark:bg-grayish_blue-800 transition-colors">
-          <DrawerCloseButton />
+          <DrawerCloseButton left={4} />
 
           <DrawerBody>
-            <div className="flex flex-col mt-8 gap-4">
+            <div className="flex flex-col mt-16 gap-4 font-bold">
               <Link href="/" passHref>
                 Collection
               </Link>
@@ -60,6 +61,6 @@ export default function DrawerMenu() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </div>
+    </>
   );
 }
