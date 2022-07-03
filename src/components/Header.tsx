@@ -6,15 +6,18 @@ import ThemeContext from "../contexts/ThemeContext";
 import Logo from "./Logo";
 import avatar from "../assets/image-avatar.png";
 import ToggleButton from "./ToggleButton";
+import Drawer from "./Drawer";
 
 export default function Header() {
   return (
     <header>
       <nav className="flex items-center justify-between gap-8 h-28 border-b border-grayish_blue-400 dark:border-grayish_blue-700 transition-colors">
+        <Drawer />
+
         <ThemeContext.Consumer>
           {({ theme }) => (
             <Link href="/">
-              <a aria-label="back to home">
+              <a aria-label="back to home" className="flex-1 lg:flex-none">
                 <Logo
                   color={
                     theme === "light"
