@@ -4,7 +4,7 @@ import WidgetCart from "./WidgetCart";
 
 export default function ShoppingCart() {
   return (
-    <Popover className="relative">
+    <Popover className="lg:relative flex flex-col justify-center">
       <Popover.Button
         className="relative text-grayish_blue-800 dark:text-grayish_blue-100 transition-colors"
         aria-label="shopping cart"
@@ -15,7 +15,7 @@ export default function ShoppingCart() {
         <ShoppingIcon size={26} width="light" />
       </Popover.Button>
 
-      <Popover.Panel className="absolute top-14 z-10 w-[360px] -translate-x-1/2">
+      <Popover.Panel className="absolute top-[76px] lg:top-14 z-10 max-w-screen w-full left-0 px-2 lg:w-[360px] lg:-translate-x-1/2">
         <WidgetCart />
       </Popover.Panel>
     </Popover>
