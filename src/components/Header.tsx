@@ -11,22 +11,24 @@ import Drawer from "./Drawer";
 export default function Header() {
   return (
     <header>
-      <nav className="flex items-center justify-between gap-4 lg:gap-8 h-28 border-b border-grayish_blue-400 dark:border-grayish_blue-700 transition-colors">
-        <Drawer />
-
+      <nav className="flex items-center justify-between gap-4 lg:gap-8 h-[68px] lg:h-28 lg:border-b border-grayish_blue-400 dark:border-grayish_blue-700 transition-colors">
         <ThemeContext.Consumer>
-          {({ theme }) => (
-            <Link href="/">
-              <a aria-label="back to home" className="flex-1 lg:flex-none">
-                <Logo
-                  color={
-                    theme === "light"
-                      ? "hsl(220, 13%, 13%)"
-                      : "hsl(223, 64%, 98%)"
-                  }
-                />
-              </a>
-            </Link>
+          {({ theme, changeTheme }) => (
+            <>
+              <Drawer value={theme} onChange={changeTheme} />
+
+              <Link href="/">
+                <a aria-label="back to home" className="flex-1 lg:flex-none">
+                  <Logo
+                    color={
+                      theme === "light"
+                        ? "hsl(220, 13%, 13%)"
+                        : "hsl(223, 64%, 98%)"
+                    }
+                  />
+                </a>
+              </Link>
+            </>
           )}
         </ThemeContext.Consumer>
 
@@ -75,7 +77,9 @@ export default function Header() {
           </ul>
 
           <ThemeContext.Consumer>
-            {({ changeTheme }) => <ToggleButton onChange={changeTheme} />}
+            {({ changeTheme, theme }) => (
+              <ToggleButton active={theme === "dark"} onChange={changeTheme} />
+            )}
           </ThemeContext.Consumer>
         </div>
 

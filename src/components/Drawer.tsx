@@ -10,10 +10,17 @@ import {
   DrawerOverlay,
 } from "@chakra-ui/react";
 
+import ThemeContext from "../contexts/ThemeContext";
+
 import ToggleButton from "./ToggleButton";
 import { List } from "phosphor-react";
 
-export default function DrawerMenu() {
+interface DrawerMenuProps {
+  value: string;
+  onChange: () => void;
+}
+
+export default function DrawerMenu({ value, onChange }: DrawerMenuProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const buttonMenuRef = useRef(null);
 
@@ -53,10 +60,17 @@ export default function DrawerMenu() {
             </div>
           </DrawerBody>
 
-          <DrawerFooter className="">
+          <DrawerFooter>
             <div className="w-full flex justify-start gap-4">
               <span>Toggle Theme</span>
-              <ToggleButton onChange={() => {}} />
+              <ThemeContext.Consumer>
+                {({ theme, changeTheme }) => (
+                  <ToggleButton
+                    active={theme === "dark"}
+                    onChange={changeTheme}
+                  />
+                )}
+              </ThemeContext.Consumer>
             </div>
           </DrawerFooter>
         </DrawerContent>
