@@ -17,6 +17,9 @@ module.exports = {
           800: "hsl(220, 13%, 13%)",
         },
       },
+      boxShadow: {
+        button: "0 20px 20px 0	rgba(255, 125, 26, 0.14)",
+      },
       fontFamily: {
         kumbh: ["Kumbh Sans", "sans-serif"],
       },
