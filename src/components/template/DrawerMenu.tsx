@@ -9,11 +9,10 @@ import {
   useDisclosure,
   DrawerOverlay,
 } from "@chakra-ui/react";
-
-import ThemeContext from "../contexts/ThemeContext";
-
-import ToggleButton from "./ToggleButton";
 import { List } from "phosphor-react";
+
+import { ToggleButton } from "./";
+import ThemeContext from "../../contexts/ThemeContext";
 
 interface DrawerMenuProps {
   value: string;

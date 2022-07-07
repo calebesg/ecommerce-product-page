@@ -1,6 +1,6 @@
 import { Popover } from "@headlessui/react";
 import { ShoppingCart as ShoppingIcon } from "phosphor-react";
-import WidgetCart from "./WidgetCart";
+import { WidgetCart } from "./";
 
 export default function ShoppingCart() {
   return (

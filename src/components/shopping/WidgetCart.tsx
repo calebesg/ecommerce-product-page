@@ -1,5 +1,5 @@
-import ItemCart from "./ItemCart";
-import Button from "./template/Button";
+import { ItemCart } from "./";
+import Button from "../template/Button";
 
 export default function WidgetCart() {
   const items = [1];

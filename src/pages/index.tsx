@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { ShoppingCart as ShoppingIcon } from "phosphor-react";
 
-import Header from "../components/Header";
-import Container from "../components/Container";
+import { Header, Container, Button } from "../components/template";
 import Slider, { SliderImageType } from "../components/slider";
-import { ShoppingCart as ShoppingIcon, Plus, Minus } from "phosphor-react";
+import Product, { Price, QuantitySelector } from "../components/product";
 
 import image1 from "../assets/image-product-1.jpg";
 import image2 from "../assets/image-product-2.jpg";
@@ -13,29 +13,25 @@ import thumb1 from "../assets/image-product-1-thumbnail.jpg";
 import thumb2 from "../assets/image-product-2-thumbnail.jpg";
 import thumb3 from "../assets/image-product-3-thumbnail.jpg";
 import thumb4 from "../assets/image-product-4-thumbnail.jpg";
-import Price from "../components/product/Price";
-import QuantitySelector from "../components/product/QuantitySelector";
-import Button from "../components/template/Button";
-import Product from "../components/product/Product";
 
 const imagesMock: SliderImageType[] = [
   {
-    key: "dskljf12",
+    key: "1",
     src: image1,
     thumb: thumb1,
   },
   {
-    key: "dskljirgj2",
+    key: "2",
     src: image2,
     thumb: thumb2,
   },
   {
-    key: "dskljir342",
+    key: "3",
     src: image3,
     thumb: thumb3,
   },
   {
-    key: "dskljir123",
+    key: "4",
     src: image4,
     thumb: thumb4,
   },

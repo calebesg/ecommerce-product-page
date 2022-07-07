@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import ShoppingCart from "../components/ShoppingCart";
-import ThemeContext from "../contexts/ThemeContext";
 
-import Logo from "./Logo";
-import avatar from "../assets/image-avatar.png";
-import ToggleButton from "./ToggleButton";
-import Drawer from "./Drawer";
+import { Logo, ToggleButton, DrawerMenu } from "./";
+import ShoppingCart from "../shopping";
+import ThemeContext from "../../contexts/ThemeContext";
+
+import avatar from "../../assets/image-avatar.png";
 
 export default function Header() {
   return (
@@ -15,7 +14,7 @@ export default function Header() {
         <ThemeContext.Consumer>
           {({ theme, changeTheme }) => (
             <>
-              <Drawer value={theme} onChange={changeTheme} />
+              <DrawerMenu value={theme} onChange={changeTheme} />
 
               <Link href="/">
                 <a aria-label="back to home" className="flex-1 lg:flex-none">

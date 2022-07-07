@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Trash } from "phosphor-react";
 
-import thumb from "../assets/image-product-1-thumbnail.jpg";
+import thumb from "../../assets/image-product-1-thumbnail.jpg";
 
 export default function ItemCart() {
   return (
