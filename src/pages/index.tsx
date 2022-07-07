@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import Header from "../components/Header";
 import Container from "../components/Container";
-import Slider, { SliderImageType } from "../components/Slider";
+import Slider, { SliderImageType } from "../components/slider";
+import { ShoppingCart as ShoppingIcon, Plus, Minus } from "phosphor-react";
 
 import image1 from "../assets/image-product-1.jpg";
 import image2 from "../assets/image-product-2.jpg";
@@ -12,6 +13,10 @@ import thumb1 from "../assets/image-product-1-thumbnail.jpg";
 import thumb2 from "../assets/image-product-2-thumbnail.jpg";
 import thumb3 from "../assets/image-product-3-thumbnail.jpg";
 import thumb4 from "../assets/image-product-4-thumbnail.jpg";
+import Price from "../components/product/Price";
+import QuantitySelector from "../components/product/QuantitySelector";
+import Button from "../components/template/Button";
+import Product from "../components/product/Product";
 
 const imagesMock: SliderImageType[] = [
   {
@@ -38,6 +43,7 @@ const imagesMock: SliderImageType[] = [
 
 export default function Home() {
   const [images, setImages] = useState<SliderImageType[] | null>(imagesMock);
+  const [qtd, setQtd] = useState(0);
 
   if (!images) return <div>Loading...</div>;
 
@@ -50,7 +56,31 @@ export default function Home() {
           <Slider images={images} />
         </div>
 
-        <div className="flex-1">oi</div>
+        <div className="flex-1 flex justify-center">
+          <Product
+            company="sneaker company"
+            title="Fall Limited Edition Sneakers"
+          >
+            <p className="text-grayish_blue-500 dark:text-grayish_blue-400 transition-colors mt-11">
+              These low-profile sneakers are you perfect casual wear companion.
+              Featuring a durable rubber outer sole, they'll withstand
+              everything the weather can offer.
+            </p>
+
+            <Price price={250} discount={50} />
+
+            <div className="flex items-center gap-4 mt-9">
+              <QuantitySelector quantity={qtd} onChange={setQtd} />
+
+              <Button
+                onClick={() => {}}
+                shadow
+                text="Add to cart"
+                icon={ShoppingIcon}
+              />
+            </div>
+          </Product>
+        </div>
       </main>
     </Container>
   );

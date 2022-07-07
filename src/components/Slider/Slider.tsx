@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import classNames from "classnames";
 
-import { SliderTypes } from "./";
+import { SliderTypes } from ".";
 
 export default function Slider(props: SliderTypes) {
   const [currentSlide, setCurrentSlide] = useState(props.images[0]);

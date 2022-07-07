@@ -1,4 +1,5 @@
 import ItemCart from "./ItemCart";
+import Button from "./template/Button";
 
 export default function WidgetCart() {
   const items = [1];
@@ -11,9 +12,7 @@ export default function WidgetCart() {
         </div>
 
         <footer className="px-6 pb-8">
-          <button className="bg-orange-500 text-white w-full font-bold rounded-xl h-14 hover:bg-orange-600 transition-colors">
-            Checkout
-          </button>
+          <Button onClick={() => {}} text="Checkout" shadow={false} />
         </footer>
       </>
     );
