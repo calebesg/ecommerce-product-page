@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ShoppingCart as ShoppingIcon } from "phosphor-react";
 
-import { Header, Container, Button } from "../components/template";
+import { Layout, Button } from "../components/template";
 import Slider, { SliderImageType } from "../components/slider";
 import Product, { Price, QuantitySelector } from "../components/product";
 
@@ -44,40 +44,36 @@ export default function Home() {
   if (!images) return <div>Loading...</div>;
 
   return (
-    <Container>
-      <Header />
+    <Layout>
+      <div className="flex-1 flex justify-center">
+        <Slider images={images} />
+      </div>
 
-      <main className="w-full my-[90px] flex items-center justify-evenly">
-        <div className="flex-1 flex justify-center">
-          <Slider images={images} />
-        </div>
+      <div className="flex-1 flex justify-center">
+        <Product
+          company="sneaker company"
+          title="Fall Limited Edition Sneakers"
+        >
+          <p className="text-grayish_blue-500 dark:text-grayish_blue-400 transition-colors mt-5 lg:mt-11">
+            These low-profile sneakers are you perfect casual wear companion.
+            Featuring a durable rubber outer sole, they'll withstand everything
+            the weather can offer.
+          </p>
 
-        <div className="flex-1 flex justify-center">
-          <Product
-            company="sneaker company"
-            title="Fall Limited Edition Sneakers"
-          >
-            <p className="text-grayish_blue-500 dark:text-grayish_blue-400 transition-colors mt-11">
-              These low-profile sneakers are you perfect casual wear companion.
-              Featuring a durable rubber outer sole, they'll withstand
-              everything the weather can offer.
-            </p>
+          <Price price={250} discount={50} />
 
-            <Price price={250} discount={50} />
+          <div className="flex flex-col lg:flex-row items-center gap-4 mt-9">
+            <QuantitySelector quantity={qtd} onChange={setQtd} />
 
-            <div className="flex items-center gap-4 mt-9">
-              <QuantitySelector quantity={qtd} onChange={setQtd} />
-
-              <Button
-                onClick={() => {}}
-                shadow
-                text="Add to cart"
-                icon={ShoppingIcon}
-              />
-            </div>
-          </Product>
-        </div>
-      </main>
-    </Container>
+            <Button
+              onClick={() => {}}
+              shadow
+              text="Add to cart"
+              icon={ShoppingIcon}
+            />
+          </div>
+        </Product>
+      </div>
+    </Layout>
   );
 }
