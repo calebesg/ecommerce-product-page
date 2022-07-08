@@ -15,14 +15,14 @@ export function CartProvider({ children }: CartProviderProps) {
   const [items, setItems] = useState<Product[]>([])
 
   const addItemToCart = (product: Product) => {
-    const isAdded = items.includes(product)
+    const index = items.findIndex(item => item.id === product.id)
 
-    if (!isAdded) return setItems([...items, product])
+    if (index === -1) {
+      return setItems([...items, product])
+    }
 
-    const updatedItems = items.map(item => {
-      if (item.id === product.id) return product
-      return item
-    })
+    const updatedItems = [...items]
+    updatedItems[index] = product
 
     setItems(updatedItems)
   }

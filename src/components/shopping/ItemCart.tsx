@@ -1,13 +1,20 @@
 import Image from 'next/image'
 import { Trash } from 'phosphor-react'
+import { Product } from '../../data/contexts/types'
+import { calcDiscount } from '../../utils/calcDiscount'
 
-import thumb from '../../assets/image-product-1-thumbnail.jpg'
+interface ItemCartProps {
+  product: Product
+  removeItemCart: (id: number) => void
+}
 
-export default function ItemCart() {
+export default function ItemCart({ product, removeItemCart }: ItemCartProps) {
+  const priceDiscount = calcDiscount(product.price, product.discount)
+
   return (
     <div className="flex items-center justify-between gap-4">
       <Image
-        src={thumb}
+        src={require('../../assets/image-product-1-thumbnail.jpg')}
         alt="product"
         width={48}
         height={48}
@@ -16,17 +23,20 @@ export default function ItemCart() {
 
       <div className="flex-1 flex flex-col leading-normal">
         <strong className="text-grayish_blue-500 dark:text-grayish_blue-400 font-thin text-md">
-          Fall Limited Edition Sneakers
+          {product.title}
         </strong>
-        <p className="text-grayish_blue-500 dark:text-grayish_blue-400 text-md">
-          $125.00 x 3{' '}
+        <p className="text-grayish_blue-500 dark:text-grayish_blue-400 text-md flex gap-1">
+          <span>{`$${priceDiscount.toFixed(2)} x ${product.quantity}`}</span>
           <span className="text-grayish_blue-800 dark:text-grayish_blue-100 font-bold">
-            $375.00
+            {`$${(priceDiscount * product.quantity).toFixed(2)}`}
           </span>
         </p>
       </div>
 
-      <button aria-label="Delete item to the cart">
+      <button
+        onClick={() => removeItemCart(product.id)}
+        aria-label="Delete item to the cart"
+      >
         <Trash size={18} />
       </button>
     </div>

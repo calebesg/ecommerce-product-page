@@ -10,7 +10,9 @@ export type Product = {
   id: number
   quantity: number
   price: number
+  discount: number
   title: string
+  thumb: string
 }
 
 export interface CartContextType {

@@ -1,14 +1,21 @@
 import { ItemCart } from './'
 import Button from '../template/Button'
+import { useCartData } from '../../data/hooks'
 
 export default function WidgetCart() {
-  const items = [1]
+  const { items, removeItemCart } = useCartData()
 
   const renderContent = function () {
     return (
       <>
         <div className="px-6 my-6 max-h-24 h-auto overflow-y-scroll flex flex-col gap-4 scrollbar-thin scrollbar-thumb-grayish_blue-500 scrollbar-track-grayish_blue-100 dark:scrollbar-track-grayish_blue-700">
-          <ItemCart />
+          {items.map((item, index) => (
+            <ItemCart
+              key={index}
+              product={item}
+              removeItemCart={removeItemCart}
+            />
+          ))}
         </div>
 
         <footer className="px-6 pb-8">

@@ -41,6 +41,8 @@ const imagesMock: SliderImageType[] = [
 const product = {
   id: 1,
   price: 250,
+  discount: 50,
+  thumb: 'image-product-1-thumbnail.jpg',
   title: 'Fall Limited Edition Sneakers',
 }
 
