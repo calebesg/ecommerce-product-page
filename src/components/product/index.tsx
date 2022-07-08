@@ -1,6 +1,6 @@
-import Product from "./Product";
-import Price from "./Price";
-import QuantitySelector from "./QuantitySelector";
+import Product from './Product'
+import Price from './Price'
+import QuantitySelector from './QuantitySelector'
 
-export default Product;
-export { Price, QuantitySelector };
+export default Product
+export { Price, QuantitySelector }

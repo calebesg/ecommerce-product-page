@@ -1,10 +1,10 @@
-import { DefaultSeo } from "next-seo";
-import type { AppProps } from "next/app";
-import { ThemeProvider } from "../contexts/ThemeContext";
+import { DefaultSeo } from 'next-seo'
+import type { AppProps } from 'next/app'
+import { ThemeProvider } from '../data/contexts/ThemeContext'
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from '@chakra-ui/react'
 
-import "../styles/globals.css";
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </ThemeProvider>
       </ChakraProvider>
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

@@ -1,7 +1,7 @@
 interface ProductProps {
-  company: string;
-  title: string;
-  children: any;
+  company: string
+  title: string
+  children: any
 }
 
 export default function Product(props: ProductProps) {
@@ -17,5 +17,5 @@ export default function Product(props: ProductProps) {
 
       {props.children}
     </div>
-  );
+  )
 }

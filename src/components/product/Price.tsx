@@ -1,10 +1,10 @@
 interface PriceProps {
-  price: number;
-  discount: number; // type % => 50
+  price: number
+  discount: number // type % => 50
 }
 
 export default function Price(props: PriceProps) {
-  const finalPrice = props.price * (props.discount / 100);
+  const finalPrice = props.price * (props.discount / 100)
 
   return (
     <div className="mt-7 flex justify-between items-center lg:flex-col lg:items-start">
@@ -18,5 +18,5 @@ export default function Price(props: PriceProps) {
         ${props.price.toFixed(2)}
       </del>
     </div>
-  );
+  )
 }

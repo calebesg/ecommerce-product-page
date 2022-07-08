@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { useRef } from "react";
+import Link from 'next/link'
+import { useRef } from 'react'
 import {
   Drawer,
   DrawerBody,
@@ -8,20 +8,20 @@ import {
   DrawerCloseButton,
   useDisclosure,
   DrawerOverlay,
-} from "@chakra-ui/react";
-import { List } from "phosphor-react";
+} from '@chakra-ui/react'
+import { List } from 'phosphor-react'
 
-import { ToggleButton } from "./";
-import ThemeContext from "../../contexts/ThemeContext";
+import { ToggleButton } from './'
+import ThemeContext from '../../data/contexts/ThemeContext'
 
 interface DrawerMenuProps {
-  value: string;
-  onChange: () => void;
+  value: string
+  onChange: () => void
 }
 
 export default function DrawerMenu({ value, onChange }: DrawerMenuProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const buttonMenuRef = useRef(null);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const buttonMenuRef = useRef(null)
 
   return (
     <>
@@ -65,7 +65,7 @@ export default function DrawerMenu({ value, onChange }: DrawerMenuProps) {
               <ThemeContext.Consumer>
                 {({ theme, changeTheme }) => (
                   <ToggleButton
-                    active={theme === "dark"}
+                    active={theme === 'dark'}
                     onChange={changeTheme}
                   />
                 )}
@@ -75,5 +75,5 @@ export default function DrawerMenu({ value, onChange }: DrawerMenuProps) {
         </DrawerContent>
       </Drawer>
     </>
-  );
+  )
 }

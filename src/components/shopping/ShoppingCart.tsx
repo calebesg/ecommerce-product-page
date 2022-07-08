@@ -1,6 +1,6 @@
-import { Popover } from "@headlessui/react";
-import { ShoppingCart as ShoppingIcon } from "phosphor-react";
-import { WidgetCart } from "./";
+import { Popover } from '@headlessui/react'
+import { ShoppingCart as ShoppingIcon } from 'phosphor-react'
+import { WidgetCart } from './'
 
 export default function ShoppingCart() {
   return (
@@ -19,5 +19,5 @@ export default function ShoppingCart() {
         <WidgetCart />
       </Popover.Panel>
     </Popover>
-  );
+  )
 }

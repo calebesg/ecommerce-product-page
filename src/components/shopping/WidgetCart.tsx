@@ -1,8 +1,8 @@
-import { ItemCart } from "./";
-import Button from "../template/Button";
+import { ItemCart } from './'
+import Button from '../template/Button'
 
 export default function WidgetCart() {
-  const items = [1];
+  const items = [1]
 
   const renderContent = function () {
     return (
@@ -15,8 +15,8 @@ export default function WidgetCart() {
           <Button onClick={() => {}} text="Checkout" shadow={false} />
         </footer>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <div className="bg-white dark:bg-grayish_blue-800 rounded-xl shadow-2xl w-full">
@@ -32,5 +32,5 @@ export default function WidgetCart() {
         </div>
       )}
     </div>
-  );
+  )
 }

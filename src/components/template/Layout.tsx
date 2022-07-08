@@ -1,8 +1,8 @@
-import React from "react";
-import { Header } from "./";
+import React from 'react'
+import { Header } from './'
 
 interface LayoutProps {
-  children: any;
+  children: any
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -13,5 +13,5 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
     </div>
-  );
+  )
 }

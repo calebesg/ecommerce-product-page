@@ -1,5 +1,5 @@
-import Slider from "./Slider";
-import { SliderTypes, SliderImageType } from "./types";
+import Slider from './Slider'
+import { SliderTypes, SliderImageType } from './types'
 
-export default Slider;
-export type { SliderTypes, SliderImageType };
+export default Slider
+export type { SliderTypes, SliderImageType }

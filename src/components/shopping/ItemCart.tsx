@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Trash } from "phosphor-react";
+import Image from 'next/image'
+import { Trash } from 'phosphor-react'
 
-import thumb from "../../assets/image-product-1-thumbnail.jpg";
+import thumb from '../../assets/image-product-1-thumbnail.jpg'
 
 export default function ItemCart() {
   return (
@@ -19,7 +19,7 @@ export default function ItemCart() {
           Fall Limited Edition Sneakers
         </strong>
         <p className="text-grayish_blue-500 dark:text-grayish_blue-400 text-md">
-          $125.00 x 3{" "}
+          $125.00 x 3{' '}
           <span className="text-grayish_blue-800 dark:text-grayish_blue-100 font-bold">
             $375.00
           </span>
@@ -30,5 +30,5 @@ export default function ItemCart() {
         <Trash size={18} />
       </button>
     </div>
-  );
+  )
 }

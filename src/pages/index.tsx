@@ -1,47 +1,47 @@
-import { useState } from "react";
-import { ShoppingCart as ShoppingIcon } from "phosphor-react";
+import { useState } from 'react'
+import { ShoppingCart as ShoppingIcon } from 'phosphor-react'
 
-import { Layout, Button } from "../components/template";
-import Slider, { SliderImageType } from "../components/slider";
-import Product, { Price, QuantitySelector } from "../components/product";
+import { Layout, Button } from '../components/template'
+import Slider, { SliderImageType } from '../components/slider'
+import Product, { Price, QuantitySelector } from '../components/product'
 
-import image1 from "../assets/image-product-1.jpg";
-import image2 from "../assets/image-product-2.jpg";
-import image3 from "../assets/image-product-3.jpg";
-import image4 from "../assets/image-product-4.jpg";
-import thumb1 from "../assets/image-product-1-thumbnail.jpg";
-import thumb2 from "../assets/image-product-2-thumbnail.jpg";
-import thumb3 from "../assets/image-product-3-thumbnail.jpg";
-import thumb4 from "../assets/image-product-4-thumbnail.jpg";
+import image1 from '../assets/image-product-1.jpg'
+import image2 from '../assets/image-product-2.jpg'
+import image3 from '../assets/image-product-3.jpg'
+import image4 from '../assets/image-product-4.jpg'
+import thumb1 from '../assets/image-product-1-thumbnail.jpg'
+import thumb2 from '../assets/image-product-2-thumbnail.jpg'
+import thumb3 from '../assets/image-product-3-thumbnail.jpg'
+import thumb4 from '../assets/image-product-4-thumbnail.jpg'
 
 const imagesMock: SliderImageType[] = [
   {
-    key: "1",
+    key: '1',
     src: image1,
     thumb: thumb1,
   },
   {
-    key: "2",
+    key: '2',
     src: image2,
     thumb: thumb2,
   },
   {
-    key: "3",
+    key: '3',
     src: image3,
     thumb: thumb3,
   },
   {
-    key: "4",
+    key: '4',
     src: image4,
     thumb: thumb4,
   },
-];
+]
 
 export default function Home() {
-  const [images, setImages] = useState<SliderImageType[] | null>(imagesMock);
-  const [qtd, setQtd] = useState(0);
+  const [images, setImages] = useState<SliderImageType[] | null>(imagesMock)
+  const [qtd, setQtd] = useState(0)
 
-  if (!images) return <div>Loading...</div>;
+  if (!images) return <div>Loading...</div>
 
   return (
     <Layout>
@@ -75,5 +75,5 @@ export default function Home() {
         </Product>
       </div>
     </Layout>
-  );
+  )
 }

@@ -1,19 +1,19 @@
-import { Minus, Plus } from "phosphor-react";
+import { Minus, Plus } from 'phosphor-react'
 
 interface QuantitySelectorProps {
-  quantity: number;
-  onChange: (value: number) => void;
+  quantity: number
+  onChange: (value: number) => void
 }
 
 export default function QuantitySelector(props: QuantitySelectorProps) {
   const add = () => {
-    props.onChange(props.quantity + 1);
-  };
+    props.onChange(props.quantity + 1)
+  }
 
   const minus = () => {
-    if (props.quantity === 0) return;
-    props.onChange(props.quantity - 1);
-  };
+    if (props.quantity === 0) return
+    props.onChange(props.quantity - 1)
+  }
 
   return (
     <div className="px-4 h-14 w-full lg:w-[157px] rounded-xl flex items-center justify-between text-orange-500 bg-grayish_blue-100 dark:bg-grayish_blue-700 transition-colors">
@@ -27,5 +27,5 @@ export default function QuantitySelector(props: QuantitySelectorProps) {
         <Plus size={16} weight="bold" aria-label="Add to cart" />
       </button>
     </div>
-  );
+  )
 }
