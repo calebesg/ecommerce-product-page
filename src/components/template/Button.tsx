@@ -11,7 +11,7 @@ export default function Button(props: ButtonProps) {
   return (
     <button
       className={classNames(
-        "flex-1 w-full h-14 flex items-center justify-center gap-4 font-bold rounded-xl bg-orange-500 hover:bg-orange-600 transition-colors text-white",
+        "w-full lg:flex-1 h-14 flex items-center justify-center gap-4 font-bold rounded-xl bg-orange-500 hover:bg-orange-600 transition-colors text-white",
         {
           "shadow-button": props.shadow,
         }

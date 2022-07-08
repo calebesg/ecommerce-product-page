@@ -9,7 +9,7 @@ import avatar from "../../assets/image-avatar.png";
 
 export default function Header() {
   return (
-    <header>
+    <header className="px-4 max-w-[1144px] mx-auto">
       <nav className="flex items-center justify-between gap-4 lg:gap-8 h-[68px] lg:h-28 lg:border-b border-grayish_blue-400 dark:border-grayish_blue-700 transition-colors">
         <ThemeContext.Consumer>
           {({ theme, changeTheme }) => (

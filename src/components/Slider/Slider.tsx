@@ -28,11 +28,13 @@ export default function Slider(props: SliderTypes) {
 
   return (
     <div className="max-w-[445px] w-full">
-      <div className="relative h-[445px] overflow-hidden rounded-2xl transition-all">
+      <div className="relative h-[100vw] lg:h-[445px] overflow-hidden lg:rounded-2xl transition-all">
         {currentSlide && <Image src={currentSlide.src} objectFit="contain" />}
       </div>
 
-      <div className="flex justify-between mt-8">{renderThumbs()}</div>
+      <div className="hidden lg:flex justify-between mt-8">
+        {renderThumbs()}
+      </div>
     </div>
   );
 }
