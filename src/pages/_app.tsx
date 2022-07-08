@@ -1,6 +1,6 @@
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
-import { ThemeProvider } from '../data/contexts/ThemeContext'
+import { ThemeProvider, CartProvider } from '../data/contexts'
 
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -12,7 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <DefaultSeo defaultTitle="E-Commerce" />
       <ChakraProvider>
         <ThemeProvider>
-          <Component {...pageProps} />
+          <CartProvider>
+            <Component {...pageProps} />
+          </CartProvider>
         </ThemeProvider>
       </ChakraProvider>
     </>

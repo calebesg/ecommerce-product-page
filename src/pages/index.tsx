@@ -4,6 +4,7 @@ import { ShoppingCart as ShoppingIcon } from 'phosphor-react'
 import { Layout, Button } from '../components/template'
 import Slider, { SliderImageType } from '../components/slider'
 import Product, { Price, QuantitySelector } from '../components/product'
+import { useCartData } from '../data/hooks'
 
 import image1 from '../assets/image-product-1.jpg'
 import image2 from '../assets/image-product-2.jpg'
@@ -37,9 +38,23 @@ const imagesMock: SliderImageType[] = [
   },
 ]
 
+const product = {
+  id: 1,
+  price: 250,
+  discount: 50,
+  thumb: 'image-product-1-thumbnail.jpg',
+  title: 'Fall Limited Edition Sneakers',
+}
+
 export default function Home() {
   const [images, setImages] = useState<SliderImageType[] | null>(imagesMock)
-  const [qtd, setQtd] = useState(0)
+  const [quantity, setQuantity] = useState(0)
+  const { addItemToCart } = useCartData()
+
+  const addToCart = () => {
+    if (quantity === 0) return
+    addItemToCart({ ...product, quantity })
+  }
 
   if (!images) return <div>Loading...</div>
 
@@ -63,10 +78,10 @@ export default function Home() {
           <Price price={250} discount={50} />
 
           <div className="flex flex-col lg:flex-row items-center gap-4 mt-9">
-            <QuantitySelector quantity={qtd} onChange={setQtd} />
+            <QuantitySelector quantity={quantity} onChange={setQuantity} />
 
             <Button
-              onClick={() => {}}
+              onClick={addToCart}
               shadow
               text="Add to cart"
               icon={ShoppingIcon}
