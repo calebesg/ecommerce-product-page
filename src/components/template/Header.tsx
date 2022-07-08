@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { Logo, ToggleButton, DrawerMenu } from './'
 import ShoppingCart from '../shopping'
-import useTheme from '../../data/hooks/useTheme'
+import { useTheme } from '../../data/hooks'
 
 import avatar from '../../assets/image-avatar.png'
 
@@ -17,11 +17,7 @@ export default function Header() {
 
         <Link href="/">
           <a aria-label="back to home" className="flex-1 lg:flex-none">
-            <Logo
-              color={
-                theme === 'dark' ? 'hsl(223, 64%, 98%)' : 'hsl(220, 13%, 13%)'
-              }
-            />
+            <Logo color={theme ? 'hsl(223, 64%, 98%)' : 'hsl(220, 13%, 13%)'} />
           </a>
         </Link>
 
