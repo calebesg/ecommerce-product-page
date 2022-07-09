@@ -17,6 +17,7 @@ export type Product = {
 
 export interface CartContextType {
   items: Product[] | []
+  totalItems: number
   addItemToCart: (item: Product) => void
   removeItemCart: (id: number) => void
 }

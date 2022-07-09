@@ -1,17 +1,23 @@
 import { Popover } from '@headlessui/react'
 import { ShoppingCart as ShoppingIcon } from 'phosphor-react'
+import { Product } from '../../data/contexts/types'
+import { useCartData } from '../../data/hooks'
 import { WidgetCart } from './'
 
 export default function ShoppingCart() {
+  const { items, totalItems } = useCartData()
+
   return (
     <Popover className="lg:relative flex flex-col justify-center">
       <Popover.Button
         className="relative text-grayish_blue-800 dark:text-grayish_blue-100 transition-colors"
         aria-label="shopping cart"
       >
-        <span className="absolute -top-1 -right-1 px-2 bg-orange-500 text-white text-[9px] rounded-lg">
-          2
-        </span>
+        {items.length > 0 && (
+          <span className="absolute -top-1 -right-1 px-2 bg-orange-500 text-white text-[9px] rounded-lg">
+            {totalItems}
+          </span>
+        )}
         <ShoppingIcon size={26} width="light" />
       </Popover.Button>
 
