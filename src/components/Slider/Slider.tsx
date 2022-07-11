@@ -1,39 +1,62 @@
 import { useState } from 'react'
 import Image from 'next/image'
-import classNames from 'classnames'
 
 import { SliderTypes } from '.'
+import { CaretLeft, CaretRight } from 'phosphor-react'
+import { TabsButton } from './TabsButton'
 
 export default function Slider(props: SliderTypes) {
-  const [currentSlide, setCurrentSlide] = useState(props.images[0])
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
-  const renderThumbs = () =>
-    props.images.map(image => {
-      return (
-        <button
-          key={image.key}
-          onClick={() => setCurrentSlide(image)}
-          className={classNames(
-            'w-[88px] h-[88px] rounded-2xl hover:scale-[1.1] transition-all overflow-hidden relative',
-            {
-              'border-2 border-orange-500 after:inset-0 after:absolute after:bg-white after:opacity-60':
-                currentSlide.key === image.key,
-            }
-          )}
-        >
-          <Image src={image.thumb} objectFit="contain" alt="teste" />
-        </button>
-      )
-    })
+  const nextSlide = () => {
+    const next =
+      props.images.length - 1 === currentSlideIndex ? 0 : currentSlideIndex + 1
+    setCurrentSlideIndex(next)
+  }
+
+  const backSlide = () => {
+    const back =
+      currentSlideIndex === 0 ? props.images.length - 1 : currentSlideIndex - 1
+    setCurrentSlideIndex(back)
+  }
 
   return (
     <div className="max-w-[445px] w-full">
-      <div className="relative h-[100vw] lg:h-[445px] overflow-hidden lg:rounded-2xl transition-all">
-        {currentSlide && <Image src={currentSlide.src} objectFit="contain" />}
+      <div
+        onClick={() => console.log('Open')}
+        className="relative h-[100vw] lg:h-[445px] overflow-hidden lg:rounded-2xl"
+      >
+        <Image src={props.images[currentSlideIndex].src} objectFit="contain" />
+
+        <div
+          onClick={e => e.stopPropagation()}
+          className="lg:hidden absolute inset-0 p-4 flex items-center justify-between text-grayish_blue-800 z-50"
+        >
+          <button
+            onClick={backSlide}
+            className="bg-white/80 backdrop-blur-sm w-12 h-12 rounded-full flex items-center justify-center active:scale-110 transition-all"
+          >
+            <CaretLeft size={20} weight="bold" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="bg-white/80 backdrop-blur-sm w-12 h-12 rounded-full flex items-center justify-center active:scale-110 transition-all"
+          >
+            <CaretRight size={20} weight="bold" />
+          </button>
+        </div>
       </div>
 
       <div className="hidden lg:flex justify-between mt-8">
-        {renderThumbs()}
+        {props.images.map((image, index) => (
+          <TabsButton
+            key={index}
+            index={index}
+            onClick={setCurrentSlideIndex}
+            thumb={image.thumb}
+            active={image.key === props.images[currentSlideIndex].key}
+          />
+        ))}
       </div>
     </div>
   )
