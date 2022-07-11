@@ -32,7 +32,7 @@ export default function Slider(props: SliderTypes) {
   return (
     <div className="max-w-[445px] w-full">
       <div
-        onClick={() => console.log('Open')}
+        onClick={props.onClickImage}
         className="relative h-[100vw] lg:h-[445px] overflow-hidden lg:rounded-2xl"
       >
         <Image
