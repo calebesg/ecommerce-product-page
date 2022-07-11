@@ -1,6 +1,5 @@
 import { Popover } from '@headlessui/react'
 import { ShoppingCart as ShoppingIcon } from 'phosphor-react'
-import { Product } from '../../data/contexts/types'
 import { useCartData } from '../../data/hooks'
 import { WidgetCart } from './'
 
