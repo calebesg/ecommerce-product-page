@@ -39,6 +39,7 @@ export default function Slider(props: SliderTypes) {
           className={`${animation ? 'animate-ping' : ''}`}
           src={props.images[currentSlideIndex].src}
           objectFit="contain"
+          layout="fill"
         />
 
         <div

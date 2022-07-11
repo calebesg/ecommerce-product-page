@@ -14,7 +14,7 @@ export default function ItemCart({ product, removeItemCart }: ItemCartProps) {
   return (
     <div className="flex items-center justify-between gap-4">
       <Image
-        src={require('../../assets/image-product-1-thumbnail.jpg')}
+        src={product.thumb}
         alt="product"
         width={48}
         height={48}

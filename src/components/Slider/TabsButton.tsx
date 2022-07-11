@@ -20,7 +20,13 @@ export function TabsButton({ thumb, onClick, active, index }: TabsButtonProps) {
         }
       )}
     >
-      <Image src={thumb} objectFit="contain" alt="teste" />
+      <Image
+        src={thumb}
+        width={100}
+        height={100}
+        objectFit="contain"
+        alt="teste"
+      />
     </button>
   )
 }

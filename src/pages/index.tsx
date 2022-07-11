@@ -6,35 +6,26 @@ import Slider, { SliderImageType } from '../components/slider'
 import Product, { Price, QuantitySelector } from '../components/product'
 import { useCartData } from '../data/hooks'
 
-import image1 from '../assets/image-product-1.jpg'
-import image2 from '../assets/image-product-2.jpg'
-import image3 from '../assets/image-product-3.jpg'
-import image4 from '../assets/image-product-4.jpg'
-import thumb1 from '../assets/image-product-1-thumbnail.jpg'
-import thumb2 from '../assets/image-product-2-thumbnail.jpg'
-import thumb3 from '../assets/image-product-3-thumbnail.jpg'
-import thumb4 from '../assets/image-product-4-thumbnail.jpg'
-
 const imagesMock: SliderImageType[] = [
   {
     key: '1',
-    src: image1,
-    thumb: thumb1,
+    src: '/images/image-1.jpg',
+    thumb: '/images/thumb-1.jpg',
   },
   {
     key: '2',
-    src: image2,
-    thumb: thumb2,
+    src: '/images/image-2.jpg',
+    thumb: '/images/thumb-2.jpg',
   },
   {
     key: '3',
-    src: image3,
-    thumb: thumb3,
+    src: '/images/image-3.jpg',
+    thumb: '/images/thumb-3.jpg',
   },
   {
     key: '4',
-    src: image4,
-    thumb: thumb4,
+    src: '/images/image-4.jpg',
+    thumb: '/images/thumb-4.jpg',
   },
 ]
 
@@ -47,7 +38,7 @@ const product = {
 }
 
 export default function Home() {
-  const [images, setImages] = useState<SliderImageType[] | null>(imagesMock)
+  const [images, setImages] = useState(imagesMock)
   const [quantity, setQuantity] = useState(0)
   const { addItemToCart } = useCartData()
 

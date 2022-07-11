@@ -5,8 +5,6 @@ import { Logo, ToggleButton, DrawerMenu } from './'
 import ShoppingCart from '../shopping'
 import { useTheme } from '../../data/hooks'
 
-import avatar from '../../assets/image-avatar.png'
-
 export default function Header() {
   const { theme, changeTheme } = useTheme()
 
@@ -72,8 +70,8 @@ export default function Header() {
           <ShoppingCart />
 
           <Link href="/" passHref>
-            <a className="w-10 h-10 lg:w-[50px] lg:h-[50px] rounded-full border-2 border-transparent  hover:border-orange-500 transition-colors">
-              <Image src={avatar} width="100%" height="100%" alt="Gabriel" />
+            <a className="w-10 h-10 lg:w-[50px] lg:h-[50px] rounded-full border-2 border-transparent  hover:border-orange-500 transition-colors relative">
+              <Image src="/images/avatar.png" layout="fill" alt="Gabriel" />
             </a>
           </Link>
         </div>

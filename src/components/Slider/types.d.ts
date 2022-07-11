@@ -6,6 +6,6 @@ export interface SliderTypes {
 
 export interface SliderImageType {
   key: any
-  src: StaticImageData
-  thumb: StaticImageData
+  src: string
+  thumb: string
 }
