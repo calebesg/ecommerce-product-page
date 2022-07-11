@@ -7,17 +7,26 @@ import { TabsButton } from './TabsButton'
 
 export default function Slider(props: SliderTypes) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
+  const [animation, setAnimation] = useState(false)
+
+  const goToSlide = (index: number) => {
+    setAnimation(true)
+    setTimeout(() => {
+      setCurrentSlideIndex(index)
+      setAnimation(false)
+    }, 600)
+  }
 
   const nextSlide = () => {
     const next =
       props.images.length - 1 === currentSlideIndex ? 0 : currentSlideIndex + 1
-    setCurrentSlideIndex(next)
+    goToSlide(next)
   }
 
   const backSlide = () => {
     const back =
       currentSlideIndex === 0 ? props.images.length - 1 : currentSlideIndex - 1
-    setCurrentSlideIndex(back)
+    goToSlide(back)
   }
 
   return (
@@ -26,11 +35,15 @@ export default function Slider(props: SliderTypes) {
         onClick={() => console.log('Open')}
         className="relative h-[100vw] lg:h-[445px] overflow-hidden lg:rounded-2xl"
       >
-        <Image src={props.images[currentSlideIndex].src} objectFit="contain" />
+        <Image
+          className={`${animation ? 'animate-ping' : ''}`}
+          src={props.images[currentSlideIndex].src}
+          objectFit="contain"
+        />
 
         <div
           onClick={e => e.stopPropagation()}
-          className="lg:hidden absolute inset-0 p-4 flex items-center justify-between text-grayish_blue-800 z-50"
+          className="lg:hidden absolute inset-0 p-4 flex items-center justify-between text-grayish_blue-800"
         >
           <button
             onClick={backSlide}
@@ -52,7 +65,7 @@ export default function Slider(props: SliderTypes) {
           <TabsButton
             key={index}
             index={index}
-            onClick={setCurrentSlideIndex}
+            onClick={goToSlide}
             thumb={image.thumb}
             active={image.key === props.images[currentSlideIndex].key}
           />
