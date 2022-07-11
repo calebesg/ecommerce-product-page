@@ -5,8 +5,9 @@ import { Layout, Button } from '../components/template'
 import Slider, { SliderImageType } from '../components/slider'
 import Product, { Price, QuantitySelector } from '../components/product'
 import { useCartData } from '../data/hooks'
+import { Modal } from '../components/modal/Modal'
 
-const imagesMock: SliderImageType[] = [
+const images: SliderImageType[] = [
   {
     key: '1',
     src: '/images/image-1.jpg',
@@ -38,13 +39,18 @@ const product = {
 }
 
 export default function Home() {
-  const [images, setImages] = useState(imagesMock)
   const [quantity, setQuantity] = useState(0)
   const { addItemToCart } = useCartData()
+  const [modal, setModal] = useState(false)
 
   const addToCart = () => {
     if (quantity === 0) return
     addItemToCart({ ...product, quantity })
+  }
+
+  const showModal = () => {
+    console.log('click')
+    setModal(true)
   }
 
   if (!images) return <div>Loading...</div>
@@ -52,7 +58,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="flex-1 flex justify-center">
-        <Slider images={images} />
+        <Slider onClickImage={showModal} images={images} />
       </div>
 
       <div className="flex-1 flex justify-center">
@@ -80,6 +86,10 @@ export default function Home() {
           </div>
         </Product>
       </div>
+
+      <Modal opened={modal} closeModal={() => setModal(false)}>
+        <Slider onClickImage={() => {}} images={images} />
+      </Modal>
     </Layout>
   )
 }
