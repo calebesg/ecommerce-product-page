@@ -4,18 +4,12 @@ import { useState } from 'react'
 import { CaretLeft, CaretRight } from 'phosphor-react'
 import { TabsButton } from './TabsButton'
 
-interface SliderTypes {
-  images: SliderImageType[]
+interface SliderProps {
+  images: any[]
   onClickImage: () => void
 }
 
-interface SliderImageType {
-  key: any
-  src: string
-  thumb: string
-}
-
-export default function Slider(props: SliderTypes) {
+export default function Slider(props: SliderProps) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [animation, setAnimation] = useState(false)
 
@@ -51,6 +45,7 @@ export default function Slider(props: SliderTypes) {
           objectFit="contain"
           layout="fill"
           alt="Sneakers"
+          priority
         />
 
         <div
