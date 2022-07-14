@@ -25,7 +25,7 @@ export function TabsButton({ thumb, onClick, active, index }: TabsButtonProps) {
         width={100}
         height={100}
         objectFit="contain"
-        alt="teste"
+        alt="Sneakers Min"
       />
     </button>
   )

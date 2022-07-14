@@ -49,11 +49,8 @@ export default function Home() {
   }
 
   const showModal = () => {
-    console.log('click')
     setModal(true)
   }
-
-  if (!images) return <div>Loading...</div>
 
   return (
     <Layout>
@@ -68,8 +65,8 @@ export default function Home() {
         >
           <p className="text-grayish_blue-500 dark:text-grayish_blue-400 transition-colors mt-5 lg:mt-11">
             These low-profile sneakers are you perfect casual wear companion.
-            Featuring a durable rubber outer sole, they'll withstand everything
-            the weather can offer.
+            Featuring a durable rubber outer sole, they&apos;ll withstand
+            everything the weather can offer.
           </p>
 
           <Price price={250} discount={50} />

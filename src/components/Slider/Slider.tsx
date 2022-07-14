@@ -40,6 +40,7 @@ export default function Slider(props: SliderTypes) {
           src={props.images[currentSlideIndex].src}
           objectFit="contain"
           layout="fill"
+          alt="Sneakers"
         />
 
         <div
