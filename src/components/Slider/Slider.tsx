@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import Image from 'next/image'
+import { useState } from 'react'
 
-import { SliderTypes } from '.'
 import { CaretLeft, CaretRight } from 'phosphor-react'
+import { SliderTypes } from '.'
 import { TabsButton } from './TabsButton'
 
 export default function Slider(props: SliderTypes) {
@@ -30,10 +30,10 @@ export default function Slider(props: SliderTypes) {
   }
 
   return (
-    <div className="max-w-[445px] w-full">
+    <div className="w-screen md:w-[445px]">
       <div
         onClick={props.onClickImage}
-        className="relative h-[100vw] lg:h-[445px] overflow-hidden lg:rounded-2xl"
+        className="relative w-full h-[100vw] md:h-[445px] overflow-hidden md:rounded-2xl"
       >
         <Image
           className={`${animation ? 'animate-ping' : ''}`}
@@ -44,7 +44,7 @@ export default function Slider(props: SliderTypes) {
 
         <div
           onClick={e => e.stopPropagation()}
-          className="lg:hidden absolute inset-0 p-4 flex items-center justify-between text-grayish_blue-800"
+          className="md:hidden absolute inset-0 p-4 flex items-center justify-between text-grayish_blue-800"
         >
           <button
             onClick={backSlide}
@@ -61,7 +61,7 @@ export default function Slider(props: SliderTypes) {
         </div>
       </div>
 
-      <div className="hidden lg:flex justify-between mt-8">
+      <div className="hidden md:flex justify-between mt-8">
         {props.images.map((image, index) => (
           <TabsButton
             key={index}
