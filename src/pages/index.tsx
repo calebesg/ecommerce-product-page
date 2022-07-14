@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import { ShoppingCart as ShoppingIcon } from 'phosphor-react'
+import { useState } from 'react'
 
-import { Layout, Button } from '../components/template'
-import Slider, { SliderImageType } from '../components/slider'
-import Product, { Price, QuantitySelector } from '../components/product'
-import { useCartData } from '../data/hooks'
 import { Modal } from '../components/modal/Modal'
+import Product, { Price, QuantitySelector } from '../components/product'
+import Slider, { SliderImageType } from '../components/slider'
+import { Button, Layout } from '../components/template'
+import { useCartData } from '../data/hooks'
 
 const images: SliderImageType[] = [
   {
@@ -34,7 +34,7 @@ const product = {
   id: 1,
   price: 250,
   discount: 50,
-  thumb: 'image-product-1-thumbnail.jpg',
+  thumb: '/images/thumb-1.jpg',
   title: 'Fall Limited Edition Sneakers',
 }
 
