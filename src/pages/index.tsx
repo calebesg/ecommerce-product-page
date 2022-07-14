@@ -3,49 +3,59 @@ import { useState } from 'react'
 
 import { Modal } from '../components/modal/Modal'
 import Product, { Price, QuantitySelector } from '../components/product'
-import Slider, { SliderImageType } from '../components/slider'
+import Slider from '../components/slider/Slider'
 import { Button, Layout } from '../components/template'
 import { useCartData } from '../data/hooks'
 
-const images: SliderImageType[] = [
-  {
-    key: '1',
-    src: '/images/image-1.jpg',
+export function getStaticProps() {
+  const product = {
+    id: 1,
+    price: 250,
+    discount: 50,
     thumb: '/images/thumb-1.jpg',
-  },
-  {
-    key: '2',
-    src: '/images/image-2.jpg',
-    thumb: '/images/thumb-2.jpg',
-  },
-  {
-    key: '3',
-    src: '/images/image-3.jpg',
-    thumb: '/images/thumb-3.jpg',
-  },
-  {
-    key: '4',
-    src: '/images/image-4.jpg',
-    thumb: '/images/thumb-4.jpg',
-  },
-]
+    title: 'Fall Limited Edition Sneakers',
+    description: `These low-profile sneakers are you perfect casual wear companion.
+    Featuring a durable rubber outer sole, they'll withstand
+    everything the weather can offer.`,
+    images: [
+      {
+        key: '1',
+        src: '/images/image-1.jpg',
+        thumb: '/images/thumb-1.jpg',
+      },
+      {
+        key: '2',
+        src: '/images/image-2.jpg',
+        thumb: '/images/thumb-2.jpg',
+      },
+      {
+        key: '3',
+        src: '/images/image-3.jpg',
+        thumb: '/images/thumb-3.jpg',
+      },
+      {
+        key: '4',
+        src: '/images/image-4.jpg',
+        thumb: '/images/thumb-4.jpg',
+      },
+    ],
+  }
 
-const product = {
-  id: 1,
-  price: 250,
-  discount: 50,
-  thumb: '/images/thumb-1.jpg',
-  title: 'Fall Limited Edition Sneakers',
+  return {
+    props: {
+      product: product,
+    },
+  }
 }
 
-export default function Home() {
+export default function Home(props: any) {
   const [quantity, setQuantity] = useState(0)
-  const { addItemToCart } = useCartData()
   const [modal, setModal] = useState(false)
+  const { addItemToCart } = useCartData()
 
   const addToCart = () => {
     if (quantity === 0) return
-    addItemToCart({ ...product, quantity })
+    addItemToCart({ ...props.product, quantity })
   }
 
   const showModal = () => {
@@ -55,7 +65,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="flex-1 flex justify-center">
-        <Slider onClickImage={showModal} images={images} />
+        <Slider onClickImage={showModal} images={props.product.images} />
       </div>
 
       <div className="flex-1 flex justify-center">
@@ -64,12 +74,13 @@ export default function Home() {
           title="Fall Limited Edition Sneakers"
         >
           <p className="text-grayish_blue-500 dark:text-grayish_blue-400 transition-colors mt-5 lg:mt-11">
-            These low-profile sneakers are you perfect casual wear companion.
-            Featuring a durable rubber outer sole, they&apos;ll withstand
-            everything the weather can offer.
+            {props.product.description}
           </p>
 
-          <Price price={250} discount={50} />
+          <Price
+            price={props.product.price}
+            discount={props.product.discount}
+          />
 
           <div className="flex flex-col lg:flex-row items-center gap-4 mt-9">
             <QuantitySelector quantity={quantity} onChange={setQuantity} />
@@ -85,7 +96,7 @@ export default function Home() {
       </div>
 
       <Modal opened={modal} closeModal={() => setModal(false)}>
-        <Slider onClickImage={() => {}} images={images} />
+        <Slider onClickImage={() => {}} images={props.product.images} />
       </Modal>
     </Layout>
   )

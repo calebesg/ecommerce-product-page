@@ -2,8 +2,18 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 import { CaretLeft, CaretRight } from 'phosphor-react'
-import { SliderTypes } from '.'
 import { TabsButton } from './TabsButton'
+
+export interface SliderTypes {
+  images: SliderImageType[]
+  onClickImage: () => void
+}
+
+export interface SliderImageType {
+  key: any
+  src: string
+  thumb: string
+}
 
 export default function Slider(props: SliderTypes) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
