@@ -4,12 +4,12 @@ import { useState } from 'react'
 import { CaretLeft, CaretRight } from 'phosphor-react'
 import { TabsButton } from './TabsButton'
 
-export interface SliderTypes {
+interface SliderTypes {
   images: SliderImageType[]
   onClickImage: () => void
 }
 
-export interface SliderImageType {
+interface SliderImageType {
   key: any
   src: string
   thumb: string
