@@ -12,7 +12,7 @@ export default function Button(props: ButtonProps) {
     <button
       onClick={props.onClick}
       className={classNames(
-        'w-full lg:flex-1 h-14 flex items-center justify-center gap-4 font-bold rounded-xl bg-orange-500 hover:bg-orange-600 transition-colors text-white',
+        'w-full lg:flex-1 h-14 flex items-center justify-center gap-4 font-bold rounded-xl bg-orange-500 hover:bg-orange-600 active:scale-105 transition-all text-white',
         {
           'shadow-button': props.shadow,
         }
