@@ -1,11 +1,15 @@
 import { createContext, useState } from 'react'
-import { CartContextType, Product } from './types'
+import ProductCore from '../../core/ProductCore'
+
+interface CartContextType {
+  items?: ProductCore[]
+  totalItems: number
+  addItemToCart?: (item: ProductCore) => void
+  removeItemCart?: (id: number) => void
+}
 
 const CartContext = createContext<CartContextType>({
-  items: [],
   totalItems: 0,
-  addItemToCart: () => {},
-  removeItemCart: () => {},
 })
 
 interface CartProviderProps {
@@ -13,15 +17,15 @@ interface CartProviderProps {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [items, setItems] = useState<Product[]>([])
+  const [items, setItems] = useState<ProductCore[]>([])
   const [totalItems, setTotalItems] = useState(0)
 
-  const countItems = (arrItems: Product[]) => {
+  const countItems = (arrItems: ProductCore[]) => {
     const total = arrItems.reduce((acc, curr) => acc + curr.quantity, 0)
     setTotalItems(total)
   }
 
-  const addItemToCart = (product: Product) => {
+  const addItemToCart = (product: ProductCore) => {
     const index = items.findIndex(item => item.id === product.id)
 
     let list
@@ -32,11 +36,11 @@ export function CartProvider({ children }: CartProviderProps) {
     countItems(list)
   }
 
-  const addNewItem = (product: Product) => {
+  const addNewItem = (product: ProductCore) => {
     return [...items, product]
   }
 
-  const updateItem = (product: Product, index: number) => {
+  const updateItem = (product: ProductCore, index: number) => {
     const updatedItems = [...items]
     updatedItems[index] = product
     return updatedItems
@@ -45,7 +49,7 @@ export function CartProvider({ children }: CartProviderProps) {
   const removeItemCart = (id: number) => {
     const updatedItems = items.filter(item => item.id !== id)
     setItems(updatedItems)
-    countItems(updatedItems)
+    // countItems(updatedItems)
   }
 
   return (

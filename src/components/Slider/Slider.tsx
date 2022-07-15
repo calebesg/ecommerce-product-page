@@ -1,37 +1,18 @@
 import Image from 'next/image'
-import { useState } from 'react'
 
 import { CaretLeft, CaretRight } from 'phosphor-react'
-import { TabsButton } from './TabsButton'
+import { TabsButton } from '.'
+import ProductImage from '../../core/ProductImage'
+import { useSlider } from '../../data/hooks'
 
 interface SliderProps {
-  images: any[]
+  images: ProductImage[]
   onClickImage: () => void
 }
 
 export default function Slider(props: SliderProps) {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
-  const [animation, setAnimation] = useState(false)
-
-  const goToSlide = (index: number) => {
-    setAnimation(true)
-    setTimeout(() => {
-      setCurrentSlideIndex(index)
-      setAnimation(false)
-    }, 600)
-  }
-
-  const nextSlide = () => {
-    const next =
-      props.images.length - 1 === currentSlideIndex ? 0 : currentSlideIndex + 1
-    goToSlide(next)
-  }
-
-  const backSlide = () => {
-    const back =
-      currentSlideIndex === 0 ? props.images.length - 1 : currentSlideIndex - 1
-    goToSlide(back)
-  }
+  const { goToSlide, animation, backSlide, nextSlide, currentSlideIndex } =
+    useSlider(props.images.length)
 
   return (
     <div className="w-screen md:w-[445px]">
@@ -74,7 +55,7 @@ export default function Slider(props: SliderProps) {
             index={index}
             onClick={goToSlide}
             thumb={image.thumb}
-            active={image.key === props.images[currentSlideIndex].key}
+            active={index === currentSlideIndex}
           />
         ))}
       </div>

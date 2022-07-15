@@ -11,7 +11,7 @@ export default function QuantitySelector(props: QuantitySelectorProps) {
   }
 
   const minus = () => {
-    if (props.quantity === 0) return
+    if (props.quantity === 1) return
     props.onChange(props.quantity - 1)
   }
 

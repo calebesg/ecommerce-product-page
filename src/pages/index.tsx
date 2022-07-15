@@ -5,36 +5,33 @@ import { Modal } from '../components/modal/Modal'
 import Product, { Price, QuantitySelector } from '../components/product'
 import Slider from '../components/slider/Slider'
 import { Button, Layout } from '../components/template'
+import ProductCore from '../core/ProductCore'
 import { useCartData } from '../data/hooks'
 
 export function getStaticProps() {
-  const product = {
+  const product: ProductCore = {
     id: 1,
     price: 250,
     discount: 50,
-    thumb: '/images/thumb-1.jpg',
+    quantity: 0,
     title: 'Fall Limited Edition Sneakers',
     description: `These low-profile sneakers are you perfect casual wear companion.
     Featuring a durable rubber outer sole, they'll withstand
     everything the weather can offer.`,
     images: [
       {
-        key: '1',
         src: '/images/image-1.jpg',
         thumb: '/images/thumb-1.jpg',
       },
       {
-        key: '2',
         src: '/images/image-2.jpg',
         thumb: '/images/thumb-2.jpg',
       },
       {
-        key: '3',
         src: '/images/image-3.jpg',
         thumb: '/images/thumb-3.jpg',
       },
       {
-        key: '4',
         src: '/images/image-4.jpg',
         thumb: '/images/thumb-4.jpg',
       },
@@ -43,29 +40,28 @@ export function getStaticProps() {
 
   return {
     props: {
-      product: product,
+      product,
     },
   }
 }
 
-export default function Home(props: any) {
-  const [quantity, setQuantity] = useState(0)
+interface HomeProps {
+  product: ProductCore
+}
+
+export default function Home(props: HomeProps) {
+  const [quantity, setQuantity] = useState(1)
   const [modal, setModal] = useState(false)
+
   const { addItemToCart } = useCartData()
-
-  const addToCart = () => {
-    if (quantity === 0) return
-    addItemToCart({ ...props.product, quantity })
-  }
-
-  const showModal = () => {
-    setModal(true)
-  }
 
   return (
     <Layout>
       <div className="flex-1 flex justify-center">
-        <Slider onClickImage={showModal} images={props.product.images} />
+        <Slider
+          onClickImage={() => setModal(true)}
+          images={props.product.images}
+        />
       </div>
 
       <div className="flex-1 flex justify-center">
@@ -86,7 +82,7 @@ export default function Home(props: any) {
             <QuantitySelector quantity={quantity} onChange={setQuantity} />
 
             <Button
-              onClick={addToCart}
+              onClick={() => addItemToCart?.({ ...props.product, quantity })}
               shadow
               text="Add to cart"
               icon={ShoppingIcon}

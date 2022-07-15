@@ -2,13 +2,18 @@ import classNames from 'classnames'
 import Image from 'next/image'
 
 interface TabsButtonProps {
-  thumb: any
+  index: number
+  thumb: string
   active: boolean
   onClick: (index: number) => void
-  index: number
 }
 
-export function TabsButton({ thumb, onClick, active, index }: TabsButtonProps) {
+export default function TabsButton({
+  thumb,
+  onClick,
+  active,
+  index,
+}: TabsButtonProps) {
   return (
     <button
       onClick={() => onClick(index)}

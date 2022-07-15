@@ -1,6 +1,11 @@
 import { createContext, useState } from 'react'
 
-import { ThemeContextType, Theme } from './types'
+type Theme = 'dark' | ''
+
+interface ThemeContextType {
+  theme: Theme
+  changeTheme: () => void
+}
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: '',
