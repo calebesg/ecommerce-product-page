@@ -26,7 +26,6 @@ export default function InteractiveSlider(props: InteractiveSliderProps) {
           objectFit="contain"
           layout="fill"
           alt="Sneakers"
-          priority
         />
 
         <div

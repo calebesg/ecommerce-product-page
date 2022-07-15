@@ -4,7 +4,6 @@ import InteractiveSlider from 'src/components/interactive-slider'
 
 import { Modal } from '../components/modal/Modal'
 import Product, { Price, QuantitySelector } from '../components/product'
-// import Slider from '../components/slider'
 import { Button, Layout } from '../components/template'
 import ProductCore from '../core/ProductCore'
 import { useCartData } from '../data/hooks'
