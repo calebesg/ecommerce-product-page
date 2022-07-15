@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { Modal } from '../components/modal/Modal'
 import Product, { Price, QuantitySelector } from '../components/product'
-import Slider from '../components/slider/Slider'
+import Slider from '../components/slider'
 import { Button, Layout } from '../components/template'
 import ProductCore from '../core/ProductCore'
 import { useCartData } from '../data/hooks'

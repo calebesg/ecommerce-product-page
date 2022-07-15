@@ -1,6 +1,6 @@
 import Image from 'next/image'
-
 import { CaretLeft, CaretRight } from 'phosphor-react'
+
 import { TabsButton } from '.'
 import ProductImage from '../../core/ProductImage'
 import { useSlider } from '../../data/hooks'
