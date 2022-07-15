@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { Modal } from '../components/modal/Modal'
 import Product, { Price, QuantitySelector } from '../components/product'
-import { Slider } from '../components/slider'
+import Slider from '../components/slider'
 import { Button, Layout } from '../components/template'
 import ProductCore from '../core/ProductCore'
 import { useCartData } from '../data/hooks'
@@ -92,7 +92,7 @@ export default function Home(props: HomeProps) {
       </div>
 
       <Modal opened={modal} closeModal={() => setModal(false)}>
-        {/* <Slider onClickImage={() => {}} images={props.product.images} /> */}
+        <Slider onClickImage={() => {}} images={props.product.images} />
       </Modal>
     </Layout>
   )
