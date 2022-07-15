@@ -13,8 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "pages/**/*", "src/**/*"],
+  "include": ["next-env.d.ts", "pages/**/*", "src/**/**/*"],
   "exclude": ["node_modules"]
 }
