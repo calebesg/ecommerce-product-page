@@ -59,10 +59,6 @@ export default function Home(props: HomeProps) {
   return (
     <Layout>
       <div className="flex-1 flex justify-center">
-        {/* <Slider
-          onClickImage={() => setModal(true)}
-          images={props.product.images}
-        /> */}
         <InteractiveSlider
           onClickImage={() => setModal(true)}
           images={props.product.images}
@@ -97,7 +93,7 @@ export default function Home(props: HomeProps) {
       </div>
 
       <Modal opened={modal} closeModal={() => setModal(false)}>
-        {/* <Slider onClickImage={() => {}} images={props.product.images} /> */}
+        <InteractiveSlider images={props.product.images} />
       </Modal>
     </Layout>
   )
