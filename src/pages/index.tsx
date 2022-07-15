@@ -63,7 +63,10 @@ export default function Home(props: HomeProps) {
           onClickImage={() => setModal(true)}
           images={props.product.images}
         /> */}
-        <InteractiveSlider />
+        <InteractiveSlider
+          onClickImage={() => setModal(true)}
+          images={props.product.images}
+        />
       </div>
 
       <div className="flex-1 flex justify-center">
