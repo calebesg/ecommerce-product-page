@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { Modal } from '../components/modal/Modal'
 import Product, { Price, QuantitySelector } from '../components/product'
-// import Slider from '../components/slider'
+import Slider from '../components/slider'
 import { Button, Layout } from '../components/template'
 import ProductCore from '../core/ProductCore'
 import { useCartData } from '../data/hooks'
@@ -58,10 +58,10 @@ export default function Home(props: HomeProps) {
   return (
     <Layout>
       <div className="flex-1 flex justify-center">
-        {/* <Slider
+        <Slider
           onClickImage={() => setModal(true)}
           images={props.product.images}
-        /> */}
+        />
       </div>
 
       <div className="flex-1 flex justify-center">

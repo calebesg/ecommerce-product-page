@@ -7,7 +7,7 @@ import { useSlider } from '../../data/hooks'
 
 interface SliderProps {
   images: ProductImage[]
-  onClickImage: () => void
+  onClickImage?: () => void
 }
 
 export default function Slider(props: SliderProps) {
@@ -17,7 +17,7 @@ export default function Slider(props: SliderProps) {
   return (
     <div className="w-screen md:w-[445px]">
       <div
-        onClick={props.onClickImage}
+        onClick={props?.onClickImage}
         className="relative w-full h-[100vw] md:h-[445px] overflow-hidden md:rounded-2xl"
       >
         <Image
