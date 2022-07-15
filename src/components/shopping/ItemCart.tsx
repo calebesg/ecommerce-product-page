@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { Trash } from 'phosphor-react'
-import { Product } from '../../data/contexts/types'
+import ProductCore from '../../core/ProductCore'
 import { calcDiscount } from '../../utils/calcDiscount'
 
 interface ItemCartProps {
-  product: Product
+  product: ProductCore
   removeItemCart: (id: number) => void
 }
 
@@ -14,8 +14,8 @@ export default function ItemCart({ product, removeItemCart }: ItemCartProps) {
   return (
     <div className="flex items-center justify-between gap-4">
       <Image
-        src={product.thumb}
-        alt="product"
+        src={product.images.at(0)?.thumb ?? ''}
+        alt={product.title}
         width={48}
         height={48}
         className="rounded-md"

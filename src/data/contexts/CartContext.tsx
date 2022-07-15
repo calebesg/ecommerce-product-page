@@ -49,7 +49,7 @@ export function CartProvider({ children }: CartProviderProps) {
   const removeItemCart = (id: number) => {
     const updatedItems = items.filter(item => item.id !== id)
     setItems(updatedItems)
-    // countItems(updatedItems)
+    countItems(updatedItems)
   }
 
   return (

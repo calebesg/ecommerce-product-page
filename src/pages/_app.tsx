@@ -1,6 +1,6 @@
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
-import { ThemeProvider, CartProvider } from '../data/contexts'
+import { CartProvider, ThemeProvider } from '../data/contexts'
 
 import { ChakraProvider } from '@chakra-ui/react'
 
