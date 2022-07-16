@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import { CaretLeft, CaretRight } from 'phosphor-react'
 import ProductImage from 'src/core/ProductImage'
 import { useSlider } from 'src/data/hooks'
@@ -11,7 +10,7 @@ interface InteractiveSliderProps {
 }
 
 export default function InteractiveSlider(props: InteractiveSliderProps) {
-  const { goToSlide, backSlide, animation, nextSlide, currentSlideIndex } =
+  const { goToSlide, backSlide, nextSlide, currentSlideIndex, refSlide } =
     useSlider(props.images.length)
 
   return (
@@ -20,29 +19,16 @@ export default function InteractiveSlider(props: InteractiveSliderProps) {
         onClick={props?.onClickImage}
         className="relative w-full h-[100vw] md:h-[445px] overflow-hidden md:rounded-2xl"
       >
-        <div
-          onClick={e => e.stopPropagation()}
-          className={classNames(
-            'absolute inset-0 transition-all duration-300',
-            {
-              'backdrop-blur-sm z-10': animation,
-              'backdrop-blur-0 -z-10': !animation,
-            }
-          )}
-        />
-
-        <img
-          className="w-full"
-          src={props.images[currentSlideIndex].src}
-          alt="sneakers"
-        />
-
-        {/* <Image
-          src={props.images[currentSlideIndex].thumb}
-          objectFit="contain"
-          layout="fill"
-          alt="Sneakers"
-        /> */}
+        <div ref={refSlide} className="flex transition-transform">
+          {props.images.map(image => (
+            <img
+              key={image.src}
+              className="w-full"
+              src={image.src}
+              alt="sneakers"
+            />
+          ))}
+        </div>
 
         <div
           onClick={e => e.stopPropagation()}

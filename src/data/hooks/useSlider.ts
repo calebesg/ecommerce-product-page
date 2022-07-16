@@ -1,32 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function useSlider(maxLength: number) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
-  const [animation, setAnimation] = useState(false)
+  const refSlide = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (!refSlide.current) return
+
+    const screenW = window.screen.width
+    const size =
+      screenW > 768 ? currentSlideIndex * 445 : currentSlideIndex * screenW
+    const translate = `translateX(-${size}px)`
+
+    refSlide.current.style.transform = translate
+  }, [currentSlideIndex])
 
   const goToSlide = (index: number) => {
-    setAnimation(true)
     setCurrentSlideIndex(index)
-
-    const timer = setTimeout(() => setAnimation(false), 600)
-    return () => clearTimeout(timer)
   }
 
   const nextSlide = () => {
     const next = maxLength - 1 === currentSlideIndex ? 0 : currentSlideIndex + 1
-    goToSlide(next)
+    setCurrentSlideIndex(next)
   }
 
   const backSlide = () => {
     const back = currentSlideIndex === 0 ? maxLength - 1 : currentSlideIndex - 1
-    goToSlide(back)
+    setCurrentSlideIndex(back)
   }
 
   return {
     currentSlideIndex,
-    animation,
     nextSlide,
     backSlide,
     goToSlide,
+    refSlide,
   }
 }
