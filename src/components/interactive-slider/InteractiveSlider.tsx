@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import classNames from 'classnames'
 import { CaretLeft, CaretRight } from 'phosphor-react'
 import ProductImage from 'src/core/ProductImage'
 import { useSlider } from 'src/data/hooks'
@@ -11,7 +11,7 @@ interface InteractiveSliderProps {
 }
 
 export default function InteractiveSlider(props: InteractiveSliderProps) {
-  const { goToSlide, animation, backSlide, nextSlide, currentSlideIndex } =
+  const { goToSlide, backSlide, animation, nextSlide, currentSlideIndex } =
     useSlider(props.images.length)
 
   return (
@@ -20,13 +20,28 @@ export default function InteractiveSlider(props: InteractiveSliderProps) {
         onClick={props?.onClickImage}
         className="relative w-full h-[100vw] md:h-[445px] overflow-hidden md:rounded-2xl"
       >
-        <Image
-          className={`${animation ? 'animate-ping' : ''}`}
+        <div
+          className={classNames(
+            'absolute inset-0 z-50 transition-all duration-300',
+            {
+              'backdrop-blur-sm': animation,
+              'backdrop-blur-0': !animation,
+            }
+          )}
+        />
+
+        <img
+          className="w-full"
           src={props.images[currentSlideIndex].src}
+          alt="sneakers"
+        />
+
+        {/* <Image
+          src={props.images[currentSlideIndex].thumb}
           objectFit="contain"
           layout="fill"
           alt="Sneakers"
-        />
+        /> */}
 
         <div
           onClick={e => e.stopPropagation()}

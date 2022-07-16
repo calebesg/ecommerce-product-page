@@ -6,10 +6,10 @@ export default function useSlider(maxLength: number) {
 
   const goToSlide = (index: number) => {
     setAnimation(true)
-    setTimeout(() => {
-      setCurrentSlideIndex(index)
-      setAnimation(false)
-    }, 600)
+    setCurrentSlideIndex(index)
+
+    const timer = setTimeout(() => setAnimation(false), 600)
+    return () => clearTimeout(timer)
   }
 
   const nextSlide = () => {
