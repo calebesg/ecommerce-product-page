@@ -21,11 +21,12 @@ export default function InteractiveSlider(props: InteractiveSliderProps) {
         className="relative w-full h-[100vw] md:h-[445px] overflow-hidden md:rounded-2xl"
       >
         <div
+          onClick={e => e.stopPropagation()}
           className={classNames(
-            'absolute inset-0 z-50 transition-all duration-300',
+            'absolute inset-0 transition-all duration-300',
             {
-              'backdrop-blur-sm': animation,
-              'backdrop-blur-0': !animation,
+              'backdrop-blur-sm z-10': animation,
+              'backdrop-blur-0 -z-10': !animation,
             }
           )}
         />
@@ -45,7 +46,7 @@ export default function InteractiveSlider(props: InteractiveSliderProps) {
 
         <div
           onClick={e => e.stopPropagation()}
-          className="md:hidden absolute inset-0 p-4 flex items-center justify-between text-grayish_blue-800"
+          className="md:hidden absolute inset-0 z-20 p-4 flex items-center justify-between text-grayish_blue-800"
         >
           <button
             onClick={backSlide}

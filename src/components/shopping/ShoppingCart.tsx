@@ -20,7 +20,7 @@ export default function ShoppingCart() {
         <ShoppingIcon size={26} width="light" />
       </Popover.Button>
 
-      <Popover.Panel className="absolute top-[76px] lg:top-14 z-10 max-w-screen w-full left-0 px-2 lg:w-[360px] lg:-translate-x-1/2">
+      <Popover.Panel className="absolute top-[76px] lg:top-14 z-50 max-w-screen w-full left-0 px-2 lg:w-[360px] lg:-translate-x-1/2">
         <WidgetCart />
       </Popover.Panel>
     </Popover>
